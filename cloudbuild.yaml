@@ -1,12 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/spring-app:latest', '-f', 'dock/Dockerfile', '.']
+    args: ['build', '-t', 'gcr.io/storied-scarab-446316-i2/spring-app:latest', '-f', 'dock/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/spring-app:latest']
+    args: ['push', 'gcr.io/storied-scarab-446316-i2/spring-app:latest']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/react-app:latest', '-f', 'react-app/Dockerfile', '.']
+    args: ['build', '-t', 'gcr.io/storied-scarab-446316-i2/react-app:latest', '-f', 'react-app/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/react-app:latest']
+    args: ['push', 'gcr.io/storied-scarab-446316-i2/react-app:latest']
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/spring-app-deployment.yaml']
     env:
