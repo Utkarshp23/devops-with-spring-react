@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+      - name: spring-app
+        image: gcr.io/storied-scarab-446316-i2/spring-app:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: gcr-json-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-app-service
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 34.30.225.59 # Replace with the reserved static IP address
+  selector:
+    app: spring-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  spring-app:
+    build: ./dock
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  react-app:
+    build: ./react-app
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
