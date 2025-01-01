@@ -1,4 +1,7 @@
 steps:
+  - name: 'maven:3.6.3-jdk-11'
+    entrypoint: 'bash'
+    args: ['-c', 'cd dock && mvn clean package']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/storied-scarab-446316-i2/spring-app:latest', '-f', 'dock/Dockerfile', '.']
   - name: 'gcr.io/cloud-builders/docker'
@@ -15,7 +18,7 @@ steps:
     args: ['apply', '-f', 'k8s/react-app-deployment.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-# logsBucket: gs://databucketstoried-scarab-446316-i2
+
 options:
   logging: CLOUD_LOGGING_ONLY
-  
+
