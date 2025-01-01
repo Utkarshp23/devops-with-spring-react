@@ -5,7 +5,7 @@ FROM node:14
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package*.json ./
+COPY react-app/package*.json ./
 
 # Install dependencies
 RUN npm install
