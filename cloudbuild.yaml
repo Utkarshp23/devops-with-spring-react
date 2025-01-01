@@ -15,7 +15,7 @@ steps:
     args: ['apply', '-f', 'k8s/react-app-deployment.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-logsBucket: gs://databucketstoried-scarab-446316-i2
+# logsBucket: gs://databucketstoried-scarab-446316-i2
 options:
   logging: CLOUD_LOGGING_ONLY
   
