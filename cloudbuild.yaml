@@ -13,10 +13,12 @@ steps:
     args: ['apply', '-f', 'k8s/spring-app-deployment.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster' # Replace with your cluster name
   - name: 'gcr.io/cloud-builders/kubectl'
     args: ['apply', '-f', 'k8s/react-app-deployment.yaml']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=my-cluster' # Replace with your cluster name
 
 options:
   logging: CLOUD_LOGGING_ONLY
